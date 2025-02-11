@@ -1,20 +1,16 @@
 pipeline {
-    agent any
-    stages {
-        stage('Install Node.js') {
-            steps {
-                script {
-                    // Install Node.js and npm
-                    sh 'curl -sL https://deb.nodesource.com/setup_16.x | bash -'
-                    sh 'sudo apt-get install -y nodejs'
-                }
-            }
+    agent {
+        docker {
+            image 'node:16'  // Use a Node.js image with version 16
+            label 'your-agent-label'  // Replace with your Jenkins agent label if needed
         }
+    }
+    stages {
         stage('Install npm Packages') {
             steps {
                 sh 'npm install'
             }
         }
-        // Other stages as needed
     }
 }
+
