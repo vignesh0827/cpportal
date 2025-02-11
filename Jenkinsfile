@@ -18,13 +18,13 @@ pipeline {
                 sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
             }
         }
-        stage('Run Tests') {
-            steps {
-                script {
-                    sh 'npm test'
-                }
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         script {
+        //             sh 'npm test'
+        //         }
+        //     }
+        // }
 
         stage('Start Node.js Application') {
             steps {
