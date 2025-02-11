@@ -1,24 +1,20 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Install Dependencies') {
             steps {
                 script {
-                    // Install NVM (Node Version Manager)
-                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash'
-                    sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install 16'
-                    sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
+                    // Install dependencies first
+                    sh 'npm install'
                 }
             }
         }
-        // stage('Install npm Packages') {
-        //     steps {
-        //         sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
-        //     }
-        // }
-        stage('deploy') {
+        stage('Run Node.js Script') {
             steps {
-                sh 'npm start'
+                script {
+                    // Now run the desired script
+                    sh 'node your-script.js'
+                }
             }
         }
     }
