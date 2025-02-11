@@ -1,0 +1,35 @@
+{
+  "development": {
+    "username": "codepurpleportal",
+    "password": "123456789",
+    "database": "codepurpleportal",
+    "host": "116.203.181.181",
+    "dialect": "postgres",
+    "port": 5321,
+    "dialectOptions": {
+      "ssl": false
+    }
+  },
+  "test": {
+    "username": "codepurpleportal",
+    "password": "123456789",
+    "database": "codepurpleportal",
+    "host": "116.203.181.181",
+    "dialect": "postgres",
+    "port": 5321,
+    "dialectOptions": {
+      "ssl": false
+    }
+  },
+  "production": {
+    "username": "codepurpleportal",
+    "password": "123456789",
+    "database": "codepurpleportal",
+    "host": "116.203.181.181",
+    "dialect": "postgres",
+    "port": 5321,
+    "dialectOptions": {
+      "ssl": false
+    }
+  }
+}
