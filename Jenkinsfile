@@ -1,27 +1,24 @@
-sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash'
-                    sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install 16'
-                    sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
-
-
 pipeline {
     agent any
     stages {
-        stage('Install Dependencies') {
+        stage('build') {
             steps {
                 script {
-                    // Install dependencies first
+                    // Install NVM (Node Version Manager)
                     sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash'
                     sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install 16'
                     sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
                 }
             }
         }
-        stage('Run Node.js Script') {
+        // stage('Install npm Packages') {
+        //     steps {
+        //         sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
+        //     }
+        // }
+        stage('deploy') {
             steps {
-                script {
-                    // Now run the desired script
-                    sh 'node your-script.js'
-                }
+                sh 
             }
         }
     }
