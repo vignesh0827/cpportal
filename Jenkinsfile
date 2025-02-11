@@ -17,7 +17,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './jenkins/scripts/test.sh'
+                sh 'chmod +x ./jenkins/scripts/test.sh'  // Ensure the script is executable
+                sh './jenkins/scripts/test.sh'  // Run the test script
             }
         }
     }
