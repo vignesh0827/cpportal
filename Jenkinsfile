@@ -1,16 +1,19 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:16'  // Use a Node.js image with version 16
-            label 'your-agent-label'  // Replace with your Jenkins agent label if needed
-        }
-    }
+    agent any
     stages {
+        stage('Install Node.js') {
+            steps {
+                script {
+                    // Install NVM (Node Version Manager)
+                    sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash'
+                    sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm install 16'
+                }
+            }
+        }
         stage('Install npm Packages') {
             steps {
-                sh 'npm install'
+                sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
             }
         }
     }
 }
-
