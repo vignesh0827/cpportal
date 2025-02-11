@@ -15,11 +15,6 @@ pipeline {
                 sh 'export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && npm install'
             }
         }
-        stage('Build') { 
-            steps {
-            
-            }
-        }
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
