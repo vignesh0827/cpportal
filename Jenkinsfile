@@ -29,7 +29,7 @@ pipeline {
         stage('Start Node.js Application') {
             steps {
                 script {
-                    sh 'npmstart'
+                    sh 'npm start'
                 }
             }
         }
